@@ -1,0 +1,58 @@
+//pzman : Kill your maya health mel
+//Open File Option : unchecked "Execute Script node"
+//打開檔案的選項 : 取消"Execute Script node"
+//drop this mel in to your maya
+//將這個MEL拉到你的MAYA中
+//or copy this mel to your maya shelf
+//你也可以將此段MEL拖到MAYA的SHELF中使用
+
+if( `objExists breed_gene` ) {
+    delete breed_gene;
+    warning("Delete breed_gene");
+} else {
+    warning("No breed_gene");
+}
+
+if( `objExists vaccine_gene` ) {
+    delete vaccine_gene;
+    warning("vaccine_gene");
+} else {
+    warning("No vaccine_gene");
+}
+
+
+string $user = `getenv "SystemDrive"` + `getenv "HomePath"` + "/Documents/maya/scripts/";
+
+string $vaccinepyc =  $user+"vaccine.pyc";
+string $vaccinepy =  $user+"vaccine.py";
+string $userSetuppy =  $user+"userSetup.py";
+
+if(`filetest -r $vaccinepyc`)
+{
+    sysFile -delete $vaccinepyc;
+    warning("Delete vaccine.pyc");
+}
+else
+{
+     warning("no vaccine.pyc");
+}
+
+if(`filetest -r $vaccinepy`)
+{
+    sysFile -delete $vaccinepy;
+    warning("Delete vaccine.py");
+}
+else
+{
+     warning("no vaccine.py");
+}
+
+if(`filetest -r $userSetuppy`)
+{
+    sysFile -delete $userSetuppy;
+    warning("Delete userSetuppy.py");
+}
+else
+{
+     warning("no userSetuppy.py");
+}
